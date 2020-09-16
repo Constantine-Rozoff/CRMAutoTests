@@ -20,6 +20,9 @@ public class LoginPage {
     @FindBy(xpath = "//span[contains(text(), 'Login')]")
     private WebElement loginBtn;
 
+    @FindBy(xpath = "//div[contains(text(), 'Username or password is incorrect.')]")
+    private WebElement credentialsError;
+
     public void inputLogin(String login) {
         loginField.sendKeys(login);
     }
@@ -31,4 +34,6 @@ public class LoginPage {
     public void clickLoginBtn() {
         loginBtn.click();
     }
+
+    public void findElement() {credentialsError.isDisplayed();}
 }

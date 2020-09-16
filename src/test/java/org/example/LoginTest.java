@@ -29,13 +29,14 @@ public class LoginTest {
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.inputPasswd(ConfProperties.getProperty("password"));
         loginPage.clickLoginBtn();
-        String user = profilePage.getUserName();
+        String user = profilePage.getServerName();
         Assert.assertEquals("QA SERVER", user);
     }
 
     @AfterClass
     public static void tearDowm () {
         profilePage.userLogout();
+        //Assert.assertEquals();
         //Add LoginPage assert
         driver.quit();
     }

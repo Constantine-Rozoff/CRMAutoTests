@@ -21,11 +21,10 @@ public class ProfilePage {
     @FindBy(xpath = "//span[contains(text(), 'Sign out')]")
     private WebElement logoutBtn;
 
-    public String getUserName () {
+    public String getServerName() {
       WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'QA')]")));
-        String userName = userMenu.getText();
-        return userName;
+        return userMenu.getText();
     }
 
     public void userLogout() {

@@ -1,7 +1,6 @@
 package org.example;
 
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTestWithCamelCaseUserName {
+public class LoginTestWithInvalidLoginAndPassword {
     public static LoginPage loginPage;
     public static ProfilePage profilePage;
     public static WebDriver driver;
@@ -26,18 +25,14 @@ public class LoginTestWithCamelCaseUserName {
 
     @Test
     public void loginTest() {
-        loginPage.inputLogin(ConfProperties.getProperty("loginCamelCase"));
-        loginPage.inputPasswd(ConfProperties.getProperty("password"));
+        loginPage.inputLogin(ConfProperties.getProperty("invalidLogin"));
+        loginPage.inputPasswd(ConfProperties.getProperty("invalidPassword"));
         loginPage.clickLoginBtn();
-        String user = profilePage.getServerName();
-        Assert.assertEquals("QA SERVER", user);
+        loginPage.findElement();
     }
 
     @AfterClass
     public static void tearDowm () {
-        profilePage.userLogout();
-        //Assert.assertEquals();
-        //Add LoginPage assert
         driver.quit();
     }
 }
