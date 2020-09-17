@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +22,7 @@ public class ProfilePage {
     private WebElement logoutBtn;
 
     public String getServerName() {
-      WebDriverWait wait = new WebDriverWait(driver, 10);
+      WebDriverWait wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'QA')]")));
         return userMenu.getText();
     }

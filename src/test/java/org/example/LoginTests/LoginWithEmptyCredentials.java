@@ -1,5 +1,7 @@
-package org.example;
+package org.example.LoginTests;
 
+import org.example.Pages.LoginPage;
+import org.example.Properties.ConfProperties;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -8,16 +10,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTestWithInvalidLoginAndPassword {
+public class LoginWithEmptyCredentials {
     public static LoginPage loginPage;
-    public static ProfilePage profilePage;
     public static WebDriver driver;
 
     @BeforeClass
     public static void setup() {
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        profilePage = new ProfilePage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("loginpage"));
@@ -25,10 +25,9 @@ public class LoginTestWithInvalidLoginAndPassword {
 
     @Test
     public void loginTest() {
-        loginPage.inputLogin(ConfProperties.getProperty("invalidLogin"));
-        loginPage.inputPasswd(ConfProperties.getProperty("invalidPassword"));
         loginPage.clickLoginBtn();
-        loginPage.findElement();
+        loginPage.findElementUsernameRequired();
+        loginPage.findElementPasswordRequired();
     }
 
     @AfterClass
