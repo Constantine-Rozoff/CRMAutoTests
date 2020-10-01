@@ -31,7 +31,7 @@ public class LoginWithEmptyLogin {
     }
 
     @AfterClass
-    public static void tearDowm () {
+    public static void tearDown () {
         driver.quit();
     }
 }

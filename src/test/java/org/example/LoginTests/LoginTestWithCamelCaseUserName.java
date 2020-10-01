@@ -29,7 +29,7 @@ public class LoginTestWithCamelCaseUserName {
 
     @Test
     public void loginTest() {
-        loginPage.inputLogin(ConfProperties.getProperty("loginCamelCase"));
+        loginPage.inputLogin(ConfProperties.getProperty("login").toUpperCase());
         loginPage.inputPasswd(ConfProperties.getProperty("password"));
         loginPage.clickLoginBtn();
         String user = profilePage.getServerName();
@@ -37,7 +37,7 @@ public class LoginTestWithCamelCaseUserName {
     }
 
     @AfterClass
-    public static void tearDowm () {
+    public static void tearDowm() {
         profilePage.userLogout();
         String loginScreen = loginPage.loginScreen();
         Assert.assertEquals("LOGIN TO YOUR ACCOUNT", loginScreen);
