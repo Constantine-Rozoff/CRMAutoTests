@@ -20,7 +20,7 @@ public class LoginTestWithInvalidLoginAndPassword {
 
     @DataProvider
     public static Object[][] sumTestData() {
-        return new Object[][]{
+        return new Object[][] {
                 {"ggggggg", "hhhhhhhh"},
                 {"", "password"},
                 {"      ", "password"},
@@ -43,13 +43,14 @@ public class LoginTestWithInvalidLoginAndPassword {
 
     @Test
     @UseDataProvider("sumTestData")
-    public void loginTest(String a, String b) {
-        loginPage.inputLogin(ConfProperties.getProperty(a));
-        loginPage.inputPasswd(ConfProperties.getProperty(b));
+    public void loginTest(String login, String password) {
+        loginPage.inputLogin(login);
+        loginPage.inputPasswd(password);
         loginPage.clickLoginBtn();
-        //loginPage.findElementCredError();
-        //String usernameRequired = loginPage.;
-        //Assert.assertEquals("Username is required", usernameRequired);
+        loginPage.findElementCredError();
+        String credError = loginPage.credError();
+        Assert.assertEquals("Username or password is incorrect.", credError);
+        driver.navigate().refresh();
     }
 
     @AfterClass

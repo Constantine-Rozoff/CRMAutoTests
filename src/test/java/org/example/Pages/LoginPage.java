@@ -58,4 +58,10 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'LOGIN TO YOUR ACCOUNT')]")));
         return loginScreen.getText();
     }
+
+    public String credError() {
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Username or password is incorrect.')]")));
+        return credentialsError.getText();
+    }
 }
